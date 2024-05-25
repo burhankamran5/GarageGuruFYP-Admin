@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">GarageGuruFYP-Admin</string>
+    
+    <!--Login Screen-->
+    <string name="welcome_back">Welcome Back</string>
+    <string name="login_to_continue">Login to Continue</string>
+    <string name="enter_you_email">Enter your Email</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="enter_password">Enter your Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="empty_fields_error">Please Fill Empty Fields!</string>
+    <string name="email_valid_error">Please Enter a Valid Email!</string>
+    <string name="password_lowercase_error">Password must contain at least one lowercase letter (a-z).</string>
+    <string name="password_uppercase_error">Password must contain at least one uppercase letter (A-Z).</string>
+    <string name="password_digit_error">Password must contain at least one digit (0–9).</string>
+    <string name="password_length_error">Password must be at least 8 characters long.</string>
+    <string name="password_general_error">Password does not meet requirements. Please try again.</string>
 </resources>
