@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.bkcoding.garagegurufyp_admin.R
+import com.bkcoding.garagegurufyp_admin.navigation.Screen
 import com.bkcoding.garagegurufyp_admin.ui.component.GarageButton
 import com.bkcoding.garagegurufyp_admin.ui.component.NameTextFields
 import com.bkcoding.garagegurufyp_admin.ui.component.PasswordTextFields
@@ -36,11 +37,11 @@ import com.bkcoding.garagegurufyp_admin.util.showToast
 
 @Composable
 fun LoginScreen(navController: NavController) {
-    LoginScreen()
+    LoginScreen(onSignInClick = { navController.navigate(Screen.HomeScreen.route) })
 }
 
 @Composable
-private fun LoginScreen() {
+private fun LoginScreen(onSignInClick: () -> Unit) {
     val context = LocalContext.current
     var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
@@ -113,6 +114,7 @@ private fun LoginScreen() {
             } else if (!isValidEmail(email)) {
                 showToast(context, context.getString(R.string.email_valid_error))
             } else {
+                onSignInClick()
                 //onLoginClick(UserCredential(email = email, password = passwords))
             }
         }
@@ -123,6 +125,6 @@ private fun LoginScreen() {
 @Composable
 fun LoginScreenPreview() {
     GarageGuruFYPAdminTheme {
-        LoginScreen()
+        LoginScreen(onSignInClick = {})
     }
 }
