@@ -117,6 +117,7 @@ private fun LoginScreen(onSignInClick: () -> Unit) {
                 onSignInClick()
                 //onLoginClick(UserCredential(email = email, password = passwords))
             }
+            onSignInClick()
         }
     }
 }

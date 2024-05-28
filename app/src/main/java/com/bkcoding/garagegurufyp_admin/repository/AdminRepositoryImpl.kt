@@ -1,6 +1,8 @@
 package com.bkcoding.garagegurufyp_admin.repository
 
+import android.util.Log
 import com.bkcoding.garagegurufyp_admin.dto.Garage
+import com.bkcoding.garagegurufyp_admin.ui.home.model.Customer
 import com.bkcoding.garagegurufyp_admin.util.FirebaseRef
 import com.bkcoding.garagegurufyp_admin.util.Result
 import com.google.firebase.database.DatabaseReference
@@ -21,6 +23,28 @@ class AdminRepositoryImpl @Inject constructor(private val databaseReference: Dat
                     }
                 }
                 trySend(Result.Success(garageList))
+            } else{
+                trySend(Result.Failure(Exception("No Customer found with these details")))
+            }
+        }.addOnFailureListener {
+            trySend(Result.Failure(it))
+        }
+        awaitClose {
+            close()
+        }
+    }
+
+    override fun getCustomer() = callbackFlow {
+        val customerList = mutableListOf<Customer>()
+        databaseReference.child(FirebaseRef.CUSTOMERS).get().addOnSuccessListener { dataSnapshot ->
+            if (dataSnapshot.exists()){
+                for (ds in dataSnapshot.children) {
+                    val customer: Customer? = ds.getValue(Customer::class.java)
+                    if (customer != null) {
+                        customerList.add(customer)
+                    }
+                }
+                trySend(Result.Success(customerList))
             } else{
                 trySend(Result.Failure(Exception("No Customer found with these details")))
             }

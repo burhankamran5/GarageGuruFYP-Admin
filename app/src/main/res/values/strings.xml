@@ -20,4 +20,6 @@
     <!--Home Screen-->
     <string name="welcome_back_admin">Welcome Back, Admin!</string>
     <string name="home">Home</string>
+    <string name="garage">Garage</string>
+    <string name="customer">Customer</string>
 </resources>

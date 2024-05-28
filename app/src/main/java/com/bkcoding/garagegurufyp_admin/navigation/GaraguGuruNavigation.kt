@@ -6,6 +6,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.bkcoding.garagegurufyp_admin.ui.home.CustomerScreen
+import com.bkcoding.garagegurufyp_admin.ui.home.GarageScreen
 import com.bkcoding.garagegurufyp_admin.ui.home.HomeScreen
 import com.bkcoding.garagegurufyp_admin.ui.login.LoginScreen
 
@@ -27,6 +29,18 @@ fun GarageGuruNavigation(
             enterTransition = { EnterTransition.None },
             exitTransition = { ExitTransition.None }) {
             HomeScreen(navController)
+        }
+
+        composable(Screen.GarageScreen.route,
+            enterTransition = { EnterTransition.None },
+            exitTransition = { ExitTransition.None }) {
+            GarageScreen(navController)
+        }
+
+        composable(Screen.CustomerScreen.route,
+            enterTransition = { EnterTransition.None },
+            exitTransition = { ExitTransition.None }) {
+            CustomerScreen(navController)
         }
     }
 }
